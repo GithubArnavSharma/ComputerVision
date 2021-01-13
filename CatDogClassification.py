@@ -34,24 +34,8 @@ for arr in X_cat:
     X_dog.append(arr)
 for num in y_cat:
     y_dog.append(num)
-X = X_dog
-y = y_dog
-
-shape_0 = 0
-shape_1 = 0
-for arr in X:
-    arr = np.array(arr)
-    try:
-        arr.shape[1]
-    except:
-        arr = arr.reshape(-1,1)
-    if arr.shape[0] > shape_0:
-        shape_0 = arr.shape[0]
-    if arr.shape[1] > shape_1:
-        shape_1 = arr.shape[1]
-
-X = np.array(X)
-y = np.array(y)
+X = np.array(X_dog)
+y = np.array(y_dog)
 
 xy = list(zip(X, y))
 random.shuffle(xy)
@@ -74,7 +58,6 @@ model.add(Dense(1,activation='sigmoid'))
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 model.fit(X, y, batch_size=64, epochs=5)
-model.save_weights("epic_dog_cat_model__")
 
 def predict_animal(image_path):
     the_path = 'C:\\Users\\arnie2014\\Desktop'
