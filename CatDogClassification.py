@@ -2,7 +2,7 @@ import numpy as np
 import random
 import os
 from keras import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Dropout, LeakyReLU, Dense, Flatten
+from keras.layers import Conv2D, MaxPooling2D, LeakyReLU, Dense, Flatten
 from keras.preprocessing.image import load_img, img_to_array
 
 X = []
@@ -44,9 +44,8 @@ X = np.array(list(X))
 y = np.array(list(y))
 
 model = Sequential()
-kernel_size = 3
 for filters in [32, 64, 128]:
-    model.add(Conv2D(filters, kernel_size=kernel_size,
+    model.add(Conv2D(filters, kernel_size=3,
                      kernel_initializer='he_uniform',
                      padding='same'))
     model.add(LeakyReLU())
