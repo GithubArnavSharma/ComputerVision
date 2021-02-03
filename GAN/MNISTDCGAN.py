@@ -8,7 +8,6 @@ from keras import Sequential
 from keras.layers import Dense, Conv2D, Dropout, MaxPooling2D, Conv2DTranspose, Reshape, BatchNormalization, Flatten, LeakyReLU
 from keras.optimizers import Adam
 
-
 #Load the data
 (data_arr, _), (_, _) = load_data()
 #Change each of the images to be 28 x 28 x 1 for the discriminator
@@ -124,3 +123,6 @@ def generate_images(side_num):
 #The model was trained on 50 epochs, and 4x4=16 images were outputted
 train(50)
 generate_images(4)
+
+#RESULTS(MNISTDCGAN_img.png)
+#The results showed that the model got some intelligence on how to write numbers, and although it makes small mistakes, it can still write numbers similiar to humans
