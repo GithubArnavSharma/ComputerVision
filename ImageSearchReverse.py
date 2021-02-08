@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import time
 import joblib
 from zipfile import ZipFile
 from PIL import Image
@@ -18,7 +17,6 @@ def vectorize_image(file_name):
     vector = inception(image / 255.0)
     return np.array(vector).reshape(2048,)
 
-start = time.time()
 image_vectors = []
 image_files = []
 with ZipFile('C:/Users/arnie2014/Desktop/Images.zip') as zip_fi:
@@ -31,12 +29,9 @@ with ZipFile('C:/Users/arnie2014/Desktop/Images.zip') as zip_fi:
             image_files.append(file_name)
 image_vectors = np.array(image_vectors)
 image_files = np.ravel(np.array(image_files))
-print("Time for processing images: {} secs".format(int(time.time()-start)))
 
-start = time.time()
 model = KNeighborsClassifier(1).fit(image_vectors, image_files)
 joblib.dump(model, 'nearest_image.sav')
-print("Time for KNeighbors model: {} secs".format(int(time.time()-start)))
 model = joblib.load('nearest_image.sav')
 
 def find_image(file_name):
