@@ -1,3 +1,4 @@
+#Import neccessary modules
 import numpy as np
 import matplotlib.pyplot as plt
 import joblib
@@ -7,6 +8,10 @@ from sklearn.neighbors import KNeighborsClassifier
 from keras.applications import InceptionV3
 from keras import Model
 
+#Load the InceptionV3 Model, an Image Recognition model developed by Google with a 78.1% accuracy on the ImageNet images
+#It uses a mixture of convultion2d layers, max pooling layers, average pooling layers, softmax layers, fully connected layers, concatenation, etc...
+#The last layer is the 1000 neuron softmax layer of all the classes, so we will take that out to use the last fully connected layer before that
+#The output will be a 2048 dimensional vector which will represent the image and can be used in comparison with other vectors
 inception = InceptionV3()
 inception = Model(inception.input, inception.layers[-2].output)
 
