@@ -60,7 +60,7 @@ thePred = np.array(test).reshape(test.shape[0],28,28,1)
 thePred = model.predict(thePred)
 preds = np.argmax(thePred, axis=1)
 
-#Upload the new findings and IDs to a dataframe. This model got a 99% accuracy
+#Upload the new findings and IDs to a dataframe. This model got a 99.1% accuracy
 df = pd.DataFrame({
     "ImageId":theIds,
     "Label":preds
